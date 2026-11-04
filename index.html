@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101828">
+  <title>MultiBank Receipt Studio — Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-mark">M</div>
+    <div><strong>MultiBank Receipt Studio</strong><small>Educational UI • Demo transactions only</small></div>
+  </header>
+
+  <main class="layout">
+    <section class="intro">
+      <span class="eyebrow">DESIGN • LEARN • TEST</span>
+      <h1>Create a payment receipt mockup.</h1>
+      <p>Build sample financial-interface receipts for design practice and software testing. Every output is permanently marked as a demo and does not prove that money was sent or received.</p>
+    </section>
+
+    <section class="panel controls">
+      <h2>1. Choose a template</h2>
+      <div class="template-grid" role="group" aria-label="Receipt template">
+        <button class="template active" data-template="opay">OPay-style</button>
+        <button class="template" data-template="firstbank">FirstBank-style</button>
+        <button class="template" data-template="access">Access-style</button>
+        <button class="template" data-template="paypal">PayPal-style</button>
+      </div>
+
+      <h2>2. Enter sample details</h2>
+      <form id="receiptForm">
+        <label>Sender / payer name<input id="sender" maxlength="50" value="Alex Sample" required></label>
+        <label>Receiver / beneficiary name<input id="receiver" maxlength="50" value="Jordan Demo" required></label>
+        <div class="two">
+          <label>Amount<input id="amount" type="number" min="0.01" step="0.01" value="12500" required></label>
+          <label>Currency<select id="currency"><option value="NGN">NGN (₦)</option><option value="USD">USD ($)</option><option value="GBP">GBP (£)</option><option value="EUR">EUR (€)</option></select></label>
+        </div>
+        <div class="two">
+          <label>Date<input id="date" type="date" required></label>
+          <label>Time<input id="time" type="time" required></label>
+        </div>
+        <label>Demo note (optional)<input id="note" maxlength="80" value="Sample transaction for interface testing"></label>
+        <button class="primary" type="submit">Generate demo receipt</button>
+      </form>
+      <p class="hint">Use fictional names and values only. Do not present these mockups as genuine bank or PayPal records.</p>
+    </section>
+
+    <section class="panel preview-panel">
+      <div class="preview-heading">
+        <div><h2>3. Preview</h2><p>Your sample receipt appears below.</p></div>
+        <span class="status">DEMO ONLY</span>
+      </div>
+      <article id="receipt" class="receipt opay">
+        <div class="watermark">DEMO ONLY</div>
+        <div class="receipt-brand"><span id="brandName">OPay-style</span><small>UNOFFICIAL SAMPLE DESIGN</small></div>
+        <div class="success-icon">✓</div>
+        <p class="muted center">Sample payment amount</p>
+        <div class="amount" id="outAmount">₦12,500.00</div>
+        <div class="pill">SAMPLE • NOT A REAL TRANSACTION</div>
+        <div class="details">
+          <div><span>Status</span><strong>Demo preview — not verified</strong></div>
+          <div><span>From</span><strong id="outSender">Alex Sample</strong></div>
+          <div><span>To</span><strong id="outReceiver">Jordan Demo</strong></div>
+          <div><span>Date</span><strong id="outDate">—</strong></div>
+          <div><span>Time</span><strong id="outTime">—</strong></div>
+          <div><span>Demo reference</span><strong id="outRef">DEMO-000000</strong></div>
+          <div><span>Note</span><strong id="outNote">Sample transaction for interface testing</strong></div>
+        </div>
+        <p class="receipt-footer">This is a fictional design mockup. It is not issued by, affiliated with, or verified by any financial institution. It cannot confirm a transfer or payment.</p>
+      </article>
+      <div class="actions">
+        <button id="printBtn" class="secondary" type="button">Print / Save as PDF</button>
+        <button id="pngBtn" class="secondary" type="button">Download PNG</button>
+      </div>
+      <p class="hint" id="downloadHint" aria-live="polite"></p>
+    </section>
+  </main>
+  <footer>MultiBank Receipt Studio • For education, UI prototyping and testing only.</footer>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
